@@ -31,7 +31,7 @@ namespace Links {
     return handleError(payload)
   }
 
-  export async function addUser(name: any, password: any, role: "admin" | "", warehouse_id: number) {
+  export async function addUser(name: any, password: any, role: any, warehouse_id: number) {
     const payload = await request("/addUser", {
       name, password, role, warehouse_id
     })
