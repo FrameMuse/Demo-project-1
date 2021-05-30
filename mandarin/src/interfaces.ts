@@ -6,14 +6,17 @@ export interface User {
   id: number;
   name: string;
   role: string;
-  warehouse_id: number | null;
+  warehouse: {
+    id: number
+    storage: string
+  }
   created_at: number | null;
   updated_at: number | null;
 }
 
-export interface GetUsersRequest {
+export interface PaginationData<T> {
   current_page: number
-  data: User[]
+  data: T
   first_page_url: string
   last_page: number
   last_page_url: string

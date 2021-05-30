@@ -3,7 +3,7 @@
 */
 
 import { useState, useEffect } from "react"
-import { GetUsersRequest } from "./interfaces"
+import { PaginationData, User } from "./interfaces"
 
 namespace Links {
   const fetchHost = "http://localhost"
@@ -47,7 +47,7 @@ namespace Links {
     return handleError(payload)
   }
 
-  export async function getUsers(): Promise<GetUsersRequest> {
+  export async function getUsers(): Promise<PaginationData<User[]>> {
     const payload = await request("GET", "/users")
 
     return payload
@@ -59,9 +59,28 @@ export function usePromise<T = any>(promise: Promise<T>) {
 
   useEffect(() => {
     promise.then(setResult)
-  }, [promise])
+  }, [])
 
   return result
+}
+
+export function usePagination<T = any>(paginationData: PaginationData<T> | null) {
+  const [result, setResult] = useState(paginationData)
+
+  function forward() {
+    fetch(result?.next_page_url).then(res => res.json()).then(setResult)
+  }
+  function backwards() {
+    fetch(result?.prev_page_url).then(res => res.json()).then(setResult)
+  }
+
+  return {
+    result,
+    forward,
+    backwards,
+    canGoForward: Boolean(result?.next_page_url),
+    canGoBackwards: Boolean(result?.prev_page_url)
+  }
 }
 
 export default Links
