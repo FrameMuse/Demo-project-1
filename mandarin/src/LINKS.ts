@@ -9,7 +9,7 @@ namespace Links {
   const fetchHost = "http://localhost"
   const fetchConfig: RequestInit = {}
   async function request(method: "GET" | "POST", endpoint: string, body?: any) {
-    const config = { ...fetchConfig, method, body }
+    const config = { ...fetchConfig, method, body: JSON.stringify(body) }
     const response = await fetch(fetchHost + endpoint, config)
     const payload = await response.json()
 
