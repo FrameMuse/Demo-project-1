@@ -7,7 +7,11 @@ import { PaginationData, User } from "./interfaces"
 
 namespace Links {
   const fetchHost = "http://localhost"
-  const fetchConfig: RequestInit = {}
+  const fetchConfig: RequestInit = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
   async function request(method: "GET" | "POST", endpoint: string, body?: any) {
     const config = { ...fetchConfig, method, body: JSON.stringify(body) }
     const response = await fetch(fetchHost + endpoint, config)
