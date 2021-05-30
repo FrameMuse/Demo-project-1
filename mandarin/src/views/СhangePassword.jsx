@@ -11,7 +11,7 @@ export default function СhangePassword() {
   }
 
   return (
-    <form className="form" onSubmit={submit}>
+    <form className="test" onSubmit={submit}>
       <h2 className="form-title">Сменить пароль</h2>
       <div className="form-element">
         <label className="form-element__label">Введите новый пароль:</label>

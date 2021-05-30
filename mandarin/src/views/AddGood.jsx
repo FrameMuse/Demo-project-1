@@ -12,31 +12,61 @@ export default function AddGood() {
     }
   }
 
-  const list = [...Array(20)].map((_cell, index) => ({
+  const list = [...Array(100)].map((_cell, index) => ({
     index,
     full: 0
   }))
   list.pop()
   list.push({
-    index: 20,
+    index: 100,
     full: 5
   })
   return (
-    <form className="form" onSubmit={submit}>
+    <form className="test" onSubmit={submit}>
       <h2 className="form-title">Добавить товар на склад</h2>
       <div className="form-element">
-        <label className="form-element__label">Название склада:</label>
+        <label className="form-element__label">Адрес склада:</label>
         <input className="form-element__input" name="storage-name" type="text" value="Storage" disabled />
       </div>
       <div className="form-element">
         <label className="form-element__label">Выберите товар:</label>
         <select className="form-element__input" name="icecream-type">
-          <option disabled>Мороженое в стаканчике</option>
-          <option value="cup-milk">Пломбир</option>
+          <option disabled>Плoмбир «ГороденЪ» в вафельном сахарном рожке</option>
+          <option value="cup-vanilla">Ванильное</option>
           <option value="cup-chocolate">Шоколадное</option>
-          <option disabled>Мороженое на палочке</option>
-          <option value="sticky-ice">Лёд</option>
-          <option value="sticky-vanila">Ванильное</option>
+            <option value="cup-brulle">Крем-брюле</option>
+          <option disabled>Десерт замороженный из сыворотки «SummerTime»</option>
+          <option value="ice-watermelon">Арбуз</option>
+          <option value="sticky-multifruct">Мультифрукт </option>
+            <option disabled>Мороженое «Пломбир» в крупной фасовке»</option>
+            <option value="big-cacao">Какао</option>
+            <option value="big-injir">Инжир</option>
+            <option value="big-vanilla">Ваниль</option>
+            <option disabled>Мороженое "ГороденЪ"</option>
+            <option value="gorod-vanilla">Ваниль</option>
+            <option value="gorod-cacao">Какао</option>
+            <option disabled>Мороженое с изюмом в вафельном стаканчике</option>
+            <option value="izum-cacao">Изюм-какао</option>
+            <option value="izum-vanilla">Изюм-ваниль</option>
+            <option disabled>Мороженое "Пломбир" эскимо</option>
+            <option value="sticky-vanilla">Ваниль</option>
+            <option value="sticky-cacao">Какао</option>
+            <option value="sticky-plombir">Пломбир</option>
+            <option disabled>Мороженое "Узнай мир"</option>
+            <option value="world-caramel">Соленая карамель и курага</option>
+            <option value="choco-cherry">Темный шоколад и вишня</option>
+            <option value="banana">Банан и фундук</option>
+            <option disabled>Мороженое «Пушок» в вафельном стаканчике</option>
+            <option value="cat-plombir">Пломбир</option>
+            <option value="cat-cacao">Какао</option>
+            <option disabled>Мороженое «Сливочное» в вафельном стаканчике факел</option>
+            <option value="torch-plombir">Пломбир</option>
+            <option value="torch-cacao">Какао</option>
+            <option disabled>Мороженое пломбир «Ice time» в вафельном сахарном рожке</option>
+            <option value="ice-caramel">Карамель</option>
+            <option value="ice-mandarin">Мандарин-апельсин</option>
+            <option value="ice-greip">Грейпфрукт</option>
+            <option value="ice-mokko">Мокко</option>
         </select>
       </div>
       <div className="form-element">

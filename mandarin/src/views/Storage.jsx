@@ -10,8 +10,12 @@ export default function Storage() {
     created_at: "2020.12.01"
   })
   return (
+      <form className="test">
     <div className="storage">
-      <h2>Просмотреть склад</h2>
+      <div className="form-element">
+        <label className="form-element__label">Адрес склада:</label>
+        <input className="form-element__input" name="storage-name" type="text" value="Storage" disabled />
+      </div>
       <table>
         <thead>
           <tr>
@@ -35,10 +39,11 @@ export default function Storage() {
         </tbody>
       </table>
       <div className="storage__buttons">
-        <button className="form-element__submit" type="submit">Туда</button>
-        <label className="storage__page">Page 10</label>
-        <button className="form-element__submit" type="submit">Сюда</button>
+        <button className="form-element__submit" type="submit">Назад</button>
+        <label className="storage__page">Страница 10</label>
+        <button className="form-element__submit" type="submit">Вперед</button>
       </div>
     </div>
+      </form>
   )
 }

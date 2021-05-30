@@ -11,7 +11,7 @@ export default function RemoveGood() {
     }
   }
 
-  const list = [...Array(20)].map((_cell, index) => ({
+  const list = [...Array(100)].map((_cell, index) => ({
     index,
     full: 0
   }))
@@ -21,10 +21,10 @@ export default function RemoveGood() {
     full: 5
   })
   return (
-    <form className="form" onSubmit={submit}>
-      <h2 className="form-title">Удалить товар на склад</h2>
+    <form className="test" onSubmit={submit}>
+      <h2 className="form-title">Удалить товар со склада</h2>
       <div className="form-element">
-        <label className="form-element__label">Название склада:</label>
+        <label className="form-element__label">Адрес склада:</label>
         <input className="form-element__input" name="storage-name" type="text" value="Storage" disabled />
       </div>
       <div className="form-element">
