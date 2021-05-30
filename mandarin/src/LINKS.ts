@@ -2,6 +2,7 @@
 * Copyright Lolizan  2021  https://vk.com/lolizan
 */
 
+import { useState, useEffect } from "react"
 import { GetUsersRequest } from "./interfaces"
 
 namespace Links {
@@ -51,6 +52,16 @@ namespace Links {
 
     return payload
   }
+}
+
+export function usePromise<T = any>(promise: Promise<T>) {
+  const [result, setResult] = useState(null)
+
+  useEffect(() => {
+    promise.then(setResult)
+  }, [promise])
+
+  return result
 }
 
 export default Links
