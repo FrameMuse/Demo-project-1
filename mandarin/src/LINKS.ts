@@ -23,7 +23,7 @@ namespace Links {
     return "success"
   }
 
-  export async function logIn(name: "admin", password: "admin") {
+  export async function logIn(name: "admin" | String, password: "admin" | String) {
     const payload = await request("/auth", {
       name, password
     })
@@ -31,7 +31,7 @@ namespace Links {
     return handleError(payload)
   }
 
-  export async function addUser(name, password, role, warehouse_id) {
+  export async function addUser(name: any, password: any, role: "admin" | "", warehouse_id: number) {
     const payload = await request("/addUser", {
       name, password, role, warehouse_id
     })
@@ -39,7 +39,7 @@ namespace Links {
     return handleError(payload)
   }
 
-  export async function removeUser(user_id) {
+  export async function removeUser(user_id: number) {
     const payload = await request("/removeUser", {
       user_id
     })
@@ -54,7 +54,7 @@ namespace Links {
   }
 }
 
-export function usePromise<T = any>(promise: Promise<T>) {
+export function usePromise<T = any>(promise: Promise<T>): T {
   const [result, setResult] = useState(null)
 
   useEffect(() => {
