@@ -56,6 +56,54 @@ namespace Links {
 
     return payload
   }
+
+  export async function getUserInfo(): Promise<User> {
+    const payload = await request("GET", "/user/info")
+
+    return payload
+  }
+
+  export async function logOut() {
+    const payload = await request("GET", "/logout")
+
+    return payload
+  }
+
+  export async function getWarehouses() {
+    const payload = await request("GET", "/warehouses")
+
+    return payload
+  }
+
+  export async function addProduct() {
+    const payload = await request("POST", "/addProduct")
+
+    return payload
+  }
+
+  export async function removeProduct() {
+    const payload = await request("POST", "/removeProduct")
+
+    return payload
+  }
+
+  export async function getCells() {
+    const payload = await request("POST", "/getCells")
+
+    return payload
+  }
+
+  export async function getProducts() {
+    const payload = await request("POST", "/getProducts")
+
+    return payload
+  }
+
+  export async function getReport(id: number) {
+    const payload = await request("POST", "/getReport", { id })
+
+    return payload
+  }
 }
 
 export function usePromise<T = any>(promise: Promise<T>) {
@@ -77,6 +125,10 @@ export function usePagination<T = any>(paginationData: PaginationData<T> | null)
   function backwards() {
     fetch(result?.prev_page_url).then(res => res.json()).then(setResult)
   }
+
+  useEffect(() => {
+    setResult(paginationData)
+  }, [paginationData])
 
   return {
     result,
