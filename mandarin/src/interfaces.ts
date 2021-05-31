@@ -6,12 +6,14 @@ export interface User {
   id: number;
   name: string;
   role: string;
-  warehouse: {
-    id: number
-    storage: string
-  }
+  warehouse: Warehouse
   created_at: number | null;
   updated_at: number | null;
+}
+
+export interface Warehouse {
+  id: number
+  storage: string
 }
 
 export interface PaginationData<T> {

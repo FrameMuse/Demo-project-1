@@ -3,7 +3,7 @@
 */
 
 import { useState, useEffect } from "react"
-import { PaginationData, User } from "./interfaces"
+import { PaginationData, User, Warehouse } from "./interfaces"
 
 namespace Links {
   const fetchHost = "http://localhost"
@@ -69,7 +69,7 @@ namespace Links {
     return payload
   }
 
-  export async function getWarehouses() {
+  export async function getWarehouses(): Promise<PaginationData<Warehouse[]>> {
     const payload = await request("GET", "/warehouses")
 
     return payload
@@ -87,20 +87,20 @@ namespace Links {
     return payload
   }
 
-  export async function getCells() {
-    const payload = await request("POST", "/getCells")
+  export async function getCells(warehouseId: number): Promise<number[]> {
+    const payload = await request("GET", "/getCells?warehouse_id=" + warehouseId)
 
     return payload
   }
 
   export async function getProducts() {
-    const payload = await request("POST", "/getProducts")
+    const payload = await request("GET", "/getProducts")
 
     return payload
   }
 
   export async function getReport(id: number) {
-    const payload = await request("POST", "/getReport", { id })
+    const payload = await request("GET", "/getReport?id=" + id)
 
     return payload
   }
