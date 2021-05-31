@@ -116,14 +116,31 @@ export function usePromise<T = any>(promise: Promise<T>) {
   return result
 }
 
-export function usePagination<T = any>(paginationData: PaginationData<T> | null) {
+export function usePagination<T = any>(paginationData: PaginationData<T> | null, query?: Record<string, string | number>) {
+  const [page, setPage] = useState(1)
   const [result, setResult] = useState(paginationData)
 
+  function createStringQuery(query: Record<string, string | number>) {
+    return Object.keys(query).map(key => {
+      const value = query[key]
+      return (key + "=" + value)
+    }).join("&")
+  }
+
+  function request() {
+    if (!result?.path) return
+    fetch(result.path + "?" + createStringQuery({ ...query, page }))
+      .then(res => res.json())
+      .then(setResult)
+  }
+
   function forward() {
-    fetch(result?.next_page_url).then(res => res.json()).then(setResult)
+    setPage(p => p + 1)
+    request()
   }
   function backwards() {
-    fetch(result?.prev_page_url).then(res => res.json()).then(setResult)
+    setPage(p => p - 1)
+    request()
   }
 
   useEffect(() => {

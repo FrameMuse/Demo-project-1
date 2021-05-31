@@ -22,6 +22,7 @@ export interface PaginationData<T> {
   last_page_url: string
   next_page_url: string | null
   per_page: number
+  path: string
   prev_page_url: string | null
   to: number
   total: number
