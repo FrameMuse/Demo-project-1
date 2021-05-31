@@ -16,6 +16,14 @@ export interface Warehouse {
   storage: string
 }
 
+export interface Product {
+  id: number
+  warehouse_id: number
+  article: any
+  amount: number
+  cell: number
+}
+
 export interface PaginationData<T> {
   current_page: number
   data: T
